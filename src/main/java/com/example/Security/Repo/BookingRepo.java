@@ -12,4 +12,5 @@ public interface BookingRepo extends JpaRepository<Book,Long> {
     List<Book> findByHotel(Hotel hotel);
 
     boolean existsByUserAndHotel(Register register, Hotel hotel);
+    
 }
