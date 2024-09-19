@@ -45,7 +45,7 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())  // Disable CSRF for stateless sessions
                 .authorizeHttpRequests(authorizeRequests ->
                         authorizeRequests
-                                .requestMatchers("/","/swagger-ui/**", "/v3/api-docs/**","/userregister","/userlogin").permitAll()
+                                .requestMatchers("/","/swagger-ui/**", "/v3/api-docs/**","/userregister","/userlogin","/register/forget/**").permitAll()
                                 .requestMatchers(HttpMethod.POST,"/hotels").hasAnyRole("ADMIN","MANAGER")
                                 .requestMatchers(HttpMethod.DELETE,"/hotels/*").hasRole("ADMIN")
                                 .anyRequest().authenticated()
@@ -59,7 +59,7 @@ public class SecurityConfig {
     @Bean
 public CorsConfigurationSource corsConfigurationSource() {
     CorsConfiguration configuration = new CorsConfiguration();
-    configuration.addAllowedOrigin("http://localhost:5500"); // Set your frontend's URL
+    configuration.addAllowedOrigin("https://hostelpg.netlify.app"); // Set your frontend's URL
     // configuration.setAllowedOrigins(Arrays.asList("http://127.0.0.1:5500"));
     configuration.addAllowedMethod("*");
     configuration.addAllowedHeader("*");

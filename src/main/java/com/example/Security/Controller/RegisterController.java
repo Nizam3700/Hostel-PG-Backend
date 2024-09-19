@@ -51,11 +51,20 @@ public class RegisterController {
             tags = "Put User email",
             description = "Forget Password of User"
     )
-    @PutMapping("/{email}")
-    public ResponseEntity<Register> ForgetUserpassword(@RequestParam String email, @RequestParam String newPassword){
-        Register updateRegister = registerService.forgetPassword(email, newPassword);
-        return ResponseEntity.ok(updateRegister);
+    // @PutMapping("forget/{email}")
+    // public ResponseEntity<Register> ForgetUserpassword(@RequestParam String email, @RequestParam String newPassword){
+    //     Register updateRegister = registerService.forgetPassword(email, newPassword);
+    //     return ResponseEntity.ok(updateRegister);
+    // }
+
+    @PutMapping("forget/{email}")
+    public ResponseEntity<Register> forgetUserPassword(
+    @PathVariable String email, 
+    @RequestBody String newPassword) {
+    Register updateRegister = registerService.forgetPassword(email, newPassword);
+    return ResponseEntity.ok(updateRegister);
     }
+
 
     @Operation(
             tags = "Delete User",

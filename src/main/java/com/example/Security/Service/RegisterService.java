@@ -58,6 +58,9 @@ public class RegisterService {
         }
     }
 
+    
+    
+
     public String verify(Login login) {
         Authentication authentication = authManager
                 .authenticate(new UsernamePasswordAuthenticationToken(login.getEmail(), login.getPassword()));
